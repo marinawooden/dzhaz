@@ -172,10 +172,10 @@ async def get_tracks():
             formatted_songs.append(formatted_song)
             spamwriter.writerow(formatted_song.values())
 
-            audio, sr = sf.read(extra_meta['preview_url'])
-            emb = openl3.get_audio_embedding(audio, sr)
+            # audio, sr = sf.read(extra_meta['preview_url'])
+            # emb = openl3.get_audio_embedding(audio, sr)
 
-            print(emb)
+            # print(emb)
             
             seen.add(unique_id)
             print(f"Added {title}, {artist}")
@@ -209,5 +209,5 @@ def status_check(req):
 if __name__ == "__main__":
   loop = asyncio.get_event_loop()
   # loop.run_until_complete(main())
-  # loop.run_until_complete(get_tracks())
-  store_as_vector()
+  loop.run_until_complete(get_tracks())
+  # store_as_vector()
